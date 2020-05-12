@@ -1,0 +1,35 @@
+{
+    "plan": {
+        "kitchen": {
+            "width": 20,
+            "height": 10,
+            "elements": [
+                {
+                    "type": "lamp", 
+                    "position": {
+                        "x": 5,
+                        "y": 3
+                    },
+                    "id": 12345
+                },
+                {
+                    "type": "lamp", 
+                    "position": {
+                        "x": 1,
+                        "y": 1
+                    },
+                    "id": 12445
+                },
+                {
+                    "type": "window", 
+                    "position": {
+                        "x": 0,
+                        "y": 9
+                    },
+                    "id": 7236
+                }
+
+            ]
+        }
+    }
+}
