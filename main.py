@@ -3,11 +3,13 @@ from visualizer import Visualizer
 import tkinter as tk
 
 def main():
-    rooms = load_rooms_data_from_json('/data/default.json') 
     visualizer = Visualizer('Visual Smart House', 500, 500)
+    rooms = load_rooms_data_from_json('/data/default.json', visualizer) 
+
+    rooms[0].getElementById(1).turnOff()
 
     for room in rooms:
-        visualizer.draw(room)
+        room.draw()
 
     visualizer.main_loop()
 
