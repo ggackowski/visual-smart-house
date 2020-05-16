@@ -1,7 +1,13 @@
 import paho.mqtt.client as mqtt
+import threading
+import time
+
+message = ''
 
 def on_message(client, userdata, msg):
-    print(msg.payload)
+    global message 
+    message = msg.payload
+    print(message)
 
 class Broker:
     def __init__(self, where, port):
@@ -9,6 +15,7 @@ class Broker:
         self._client = mqtt.Client()
         self._where = where
         self._port = port
+        self.message = message
 
     def add_topic(self, topic):
         self._topics.append(topic)
@@ -20,6 +27,9 @@ class Broker:
             self._client.subscribe(topic)
         self._client.loop_forever()
 
-broker = Broker('localhost', 1883)
-broker.add_topic('ok')
-broker.start()
+def broker_start():
+    broker = Broker('localhost', 1883)
+    broker.add_topic('ok')
+    broker.start()
+
+

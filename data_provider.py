@@ -8,7 +8,7 @@ def load_rooms_data_from_json(file, vis):
     with open('data/default.json', 'r') as f:
         data_dict = json.load(f)
 
-    rooms = []
+    rooms = {}
 
     for r in data_dict['plan']:
         rm = data_dict['plan'][r]
@@ -16,12 +16,12 @@ def load_rooms_data_from_json(file, vis):
         for elm in rm['elements']:
 
             if elm['type'] == 'lamp':
-                lamp = Lamp(elm['id'], elm['position']['x'], elm['position']['y'], 'ok', vis)
+                lamp = Lamp(elm['id'], elm['position']['x'], elm['position']['y'], 'on', vis)
                 room.addElement(lamp)
 
             elif elm['type'] == 'window':
-                window = Window(elm['id'], elm['position']['x'], elm['position']['y'], 'ok', vis)    
+                window = Window(elm['id'], elm['position']['x'], elm['position']['y'], 'close', vis)    
                 room.addElement(window)
-        rooms.append(room)
+        rooms[room.getName()] = room
     
     return rooms

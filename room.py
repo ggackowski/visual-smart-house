@@ -24,6 +24,15 @@ class Room:
         self._elements.append(element)
 
     def draw(self):
-        self._visualizer._canvas.create_rectangle((0, 0, 10*self._x, 10*self._y), fill='#ffffff', width=1)
+        self._visualizer.create_canvas()
+        chunk_size = 1
+        if self._x > self._y:
+            chunk_size = self._visualizer._width // self._x
+        else: 
+            chunk_size = self._visualizer._height // self._y
+
+        self._visualizer._canvas.create_rectangle((0, 0, chunk_size*self._x, chunk_size*self._y), fill='#ffffff', width=1)
         for element in self._elements:
-            element.draw()
+            element.draw(chunk_size)
+
+        
