@@ -33,7 +33,7 @@ possible types of elements (devices):
 - Lamps ("lamp")
 - Motion sensors ("motion_sensor")
 
-# Connection with MQTT broker
+# Connection with a MQTT broker
 
 App connects with a MQTT broker and can understand a message in this format:
 
