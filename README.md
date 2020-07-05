@@ -53,7 +53,8 @@ Lamp can be turned on ("/on") or off ("/off").
 
 Motion sensor can detect motion ("/movement"). It indicates it for fixed amount of time.
 
-# Screenshot
+# Preview
 
-As for now, very simple graphics
+As for now, very simple graphics.
 
+![Screenshot](/sample_screenshot.png)
