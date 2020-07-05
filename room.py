@@ -24,10 +24,11 @@ class Room:
         self._elements.append(element)
 
     def draw(self):
+        self._visualizer.set_room(self._name)
         self._visualizer.create_canvas()
         chunk_size = 1
         if self._x > self._y:
-            chunk_size = self._visualizer._width // self._x
+            chunk_size = self._visualizer._roomview_width // self._x
         else: 
             chunk_size = self._visualizer._height // self._y
 
