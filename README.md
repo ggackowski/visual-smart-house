@@ -53,7 +53,7 @@ possible types of elements (devices):
 
 App connects with a MQTT broker and can understand a message in this format:
 
-    "<room-name>/<device id>/<action>"  
+    <room-name>/<device id>/<action> 
   
 Possible actions differ among different devices and are shown below.
 
