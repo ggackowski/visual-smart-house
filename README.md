@@ -1,12 +1,27 @@
 # visual-smart-house
-Python app that visualizes the state of a smart home. 
+Python app that visualizes state of a smart home. 
 
 # Usage
 
-App uses a JSON configuration file described below. 
 To run the app, just type:
 
-    python3 main.py <json config file> <mqtt host> <mqtt port> <mqtt topic>
+    python3 main.py
+
+App uses a config file named .vsm_config, that must be in this format:
+
+  <json config file> 
+  <mqtt host> 
+  <mqtt port>
+  <mqtt topic>
+
+If no config file provided, app will run with default configuration:
+
+  data/default.json
+  localhost
+  1883
+  ok
+
+Application also uses a JSON configuration file, that is described below. 
 
 # JSON config file
 
@@ -28,6 +43,7 @@ To run the app, just type:
       }
       }
     }
+    
 possible types of elements (devices): 
 - Windows ("window")
 - Lamps ("lamp")
@@ -39,22 +55,24 @@ App connects with a MQTT broker and can understand a message in this format:
 
     "<room-name>/<device id>/<action>"  
   
-Possible actions differ among different devices.
+Possible actions differ among different devices and are shown below.
+
+Example message (using Mosquitto):
+
+  mosquitto_pub -t "ok" -m "toilet/1/open"
   
 # Window
 
-Window can be open ("/open") or closed ("/close").
+Windows can be open ("/open") or closed ("/close").
 
 # Lamp
 
-Lamp can be turned on ("/on") or off ("/off").
+Lamps can be turned on ("/on") or off ("/off").
 
 # Motion sensor
 
-Motion sensor can detect motion ("/movement"). It indicates it for fixed amount of time.
+Motions sensor can detect motion ("/movement"). It indicates it for fixed amount of time.
 
 # Preview
-
-As for now, very simple graphics.
 
 ![Screenshot](/sample_screenshot.png)
