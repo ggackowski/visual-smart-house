@@ -9,17 +9,17 @@ To run the app, just type:
 
 App uses a config file named .vsm_config, that must be in this format:
 
-  <json config file> 
-  <mqtt host> 
-  <mqtt port>
-  <mqtt topic>
+    <json config file> 
+    <mqtt host> 
+    <mqtt port>
+    <mqtt topic>
 
 If no config file provided, app will run with default configuration:
 
-  data/default.json
-  localhost
-  1883
-  ok
+    data/default.json
+    localhost
+    1883
+    ok
 
 Application also uses a JSON configuration file, that is described below. 
 
@@ -59,7 +59,7 @@ Possible actions differ among different devices and are shown below.
 
 Example message (using Mosquitto):
 
-  mosquitto_pub -t "ok" -m "toilet/1/open"
+    mosquitto_pub -t "ok" -m "toilet/1/open"
   
 # Window
 
