@@ -8,9 +8,9 @@ class Lamp(Device):
         if self._room == self._visualizer.get_room():
             self.chunk_size = chunk_size
             if self._state == 'on':
-                self._visualizer._canvas.create_rectangle((chunk_size*self._x, chunk_size*self._y, chunk_size* self._x + chunk_size, chunk_size*self._y + chunk_size), fill='#ffff00', width=1)
+                self.draw_circle(chunk_size, chunk_size / 3, fill="yellow", outline="yellow", width=4)
             else:
-                self._visualizer._canvas.create_rectangle((chunk_size*self._x, chunk_size*self._y, chunk_size* self._x + chunk_size, chunk_size*self._y + chunk_size), fill='#ffffff', width=1)
+                self.draw_circle(chunk_size, chunk_size / 3, fill="white", outline="gray", width=4)
 
 
     def execute(self, command):

@@ -11,8 +11,15 @@ class Visualizer:
         self.create_canvas()
         self._room = ''
         self._room_buttons = []
-        self._buttons = tk.LabelFrame(self._window, text="Rooms")
-        self._buttons.place(x=self._roomview_width + 10, y=0)
+        self._buttons = tk.LabelFrame(self._window, text="Rooms", bd=0)
+        self._buttons.place(x=self._roomview_width + 10, y=10)
+
+    def create_circle(self, x, y, r, **kwargs):
+        x1 = x - r
+        y1 = y - r
+        x2 = x + r
+        y2 = y + r
+        return self._canvas.create_oval(x1, y1, x2, y2, **kwargs)
 
     def create_canvas(self):
         self._canvas = tk.Canvas(self._window, width=self._roomview_width, height=self._height)
@@ -21,7 +28,7 @@ class Visualizer:
     def add_buttons(self, rooms):
         for name in rooms:
             room = rooms[name]
-            button = tk.Button(self._buttons, text=room._name, command=room.draw)
+            button = tk.Button(self._buttons, text=room._name, command=room.draw, background="white", width=10)
             self._room_buttons.append(button)
             button.pack()
 

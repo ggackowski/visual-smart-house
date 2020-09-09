@@ -27,20 +27,23 @@ def run_mqtt():
 
 def main(argv):
 
-    if len(sys.argv) < 5:
-        print("Not enough arguments!")
-        print("python3 main.py <json config file> <mqtt host> <mqtt port> <mqtt topic>")
-        exit()
-
     global config_filepath
     global mqtt_host
     global mqtt_port
     global mqtt_topic
-    
-    config_filepath = sys.argv[1]
-    mqtt_host = sys.argv[2]
-    mqtt_port = int(sys.argv[3])
-    mqtt_topic = sys.argv[4]
+
+    try:    
+        with open('.vsh_config') as config:
+            lines = config.read().splitlines()
+            config_filepath = lines[0]
+            mqtt_host = lines[1]
+            mqtt_port = int(lines[2])
+            mqtt_topic = lines[3]
+    except EnvironmentError:
+        config_filepath = 'data/default.json'
+        mqtt_host = 'localhost'
+        mqtt_port = 1883
+        mqtt_topic = 'ok'
 
     visualizer = Visualizer('Visual Smart House', 640, 480)
     global rooms
@@ -48,7 +51,7 @@ def main(argv):
 
     controller = Controller(rooms, visualizer)
 
-    run_mqtt()
+    run_mqtt() 
 
     visualizer.main_loop()
 

@@ -8,9 +8,9 @@ class Window(Device):
         if self._room == self._visualizer.get_room():
             self.chunk_size = chunk_size
             if self._state == 'open':
-                self._visualizer._canvas.create_rectangle((chunk_size*self._x, chunk_size*self._y, chunk_size* self._x + chunk_size, chunk_size*self._y + chunk_size), fill='#0000ff', width=1)
+                self.draw_circle(chunk_size, chunk_size / 2, fill="white", outline="blue", width=4)
             elif self._state == 'close':
-                self._visualizer._canvas.create_rectangle((chunk_size*self._x, chunk_size*self._y, chunk_size* self._x + chunk_size, chunk_size*self._y + chunk_size), fill='#00f0ff', width=1)
+                self.draw_circle(chunk_size, chunk_size / 2, fill="blue", outline="blue", width=4)
 
     def execute(self, command):
         if command == 'open':

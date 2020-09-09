@@ -32,7 +32,7 @@ class Room:
         else: 
             chunk_size = self._visualizer._height // self._y
 
-        self._visualizer._canvas.create_rectangle((0, 0, chunk_size*self._x, chunk_size*self._y), fill='#ffffff', width=1)
+        self._visualizer._canvas.create_rectangle((0, 0, chunk_size*self._x, chunk_size*self._y), fill='white', width=0)
         for element in self._elements:
             element.draw(chunk_size)
 
